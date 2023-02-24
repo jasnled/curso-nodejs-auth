@@ -16,7 +16,8 @@ class UserService {
 
   async find() {
     const rta = await models.User.findAll({
-      include: ['customer']
+      attributes: { exclude: ['recoveryToken'] },
+      include: ['customer'],
     });
     return rta;
   }

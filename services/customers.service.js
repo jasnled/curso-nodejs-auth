@@ -2,13 +2,20 @@ const boom = require('@hapi/boom');
 const { models } = require('../libs/sequelize');
 const bcrypt = require('bcrypt');
 
+
+
 class CustomerService {
 
   constructor() {}
 
   async find() {
     const rta = await models.Customer.findAll({
-      include: ['user']
+      include:{
+        association: 'user',
+        attributes:{
+          exclude: ['password']
+        }
+      }
     });
     return rta;
   }

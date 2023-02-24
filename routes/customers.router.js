@@ -1,5 +1,5 @@
 const express = require('express');
-
+const passport = require('passport');
 const CustomerService = require('../services/customers.service');
 const validationHandler = require('../middlewares/validator.handler');
 const {
@@ -7,6 +7,8 @@ const {
   getCustomerSchema,
   updateCustomerSchema,
 } = require('../schemas/customer.schema');
+
+
 
 const router = express.Router();
 const service = new CustomerService();
@@ -20,6 +22,9 @@ router.get('/',  async (req, res, next) => {
 });
 
 router.post('/',
+  passport.authenticate('jwt',{
+    session: false
+  }),
   validationHandler(createCustomerSchema, 'body'),
   async (req, res, next) => {
     try {
