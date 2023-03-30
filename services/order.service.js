@@ -60,7 +60,7 @@ class OrderService {
       return order;
     })*/;
 
-    return editOrders;
+    return orders;
   }
 
   async update(id, changes) {

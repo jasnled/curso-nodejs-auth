@@ -20,4 +20,4 @@ const loginSchema = Joi.object({
 });
 
 
-module.exports = {recoveryPasswordSchema,changePasswordSchema,loginSchema}
+module.exports = { recoveryPasswordSchema, changePasswordSchema, loginSchema}

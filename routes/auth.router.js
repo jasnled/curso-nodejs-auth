@@ -42,7 +42,6 @@ router.post('/recovery',
 router.post('/change-password',
   validatorHandler(changePasswordSchema, 'body'),
   async(req, res, next) => {
-
     try{
 
       const { token, newPassword } = req.body;

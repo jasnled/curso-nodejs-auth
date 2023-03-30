@@ -10,6 +10,8 @@ router.get('/my-orders',
   passport.authenticate('jwt', {session:false}),
   async (req,res,next) => {
     try {
+
+      console.log(req.user);
       const user = req.user;
       const orders = await service.findByUser(user.sub);
       res.json(orders);

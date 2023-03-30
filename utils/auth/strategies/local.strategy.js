@@ -1,5 +1,6 @@
 const { Strategy } = require('passport-local');
 
+
 const AuthService = require('./../../../services/auth.service');
 
 const service = new AuthService();
@@ -10,6 +11,7 @@ const LocalStrategy = new Strategy({
 },async (email, password, done)=>{ // creamos una instancia de la estrategia
   try{
     const user = await service.getUser(email, password);
+
     done(null, user);  // le indicarmos el error como null y le pasamos el user
   }
   catch(error){
